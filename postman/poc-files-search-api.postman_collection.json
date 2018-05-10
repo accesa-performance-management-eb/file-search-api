@@ -1,0 +1,114 @@
+{
+	"variables": [],
+	"info": {
+		"name": "poc-files-search-api",
+		"_postman_id": "704b0db5-3d8a-6a93-a3aa-9e3edf5bee80",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/rest/v1/file/search?pageSize=10&pageNumber=1&fileName=test&parentDir=test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rest",
+						"v1",
+						"file",
+						"search"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "fileName",
+							"value": "test",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "parentDir",
+							"value": "test",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "index-directory",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/rest/v1/file/index?recursive=true&path=/test/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rest",
+						"v1",
+						"file",
+						"index"
+					],
+					"query": [
+						{
+							"key": "recursive",
+							"value": "true",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "path",
+							"value": "/test/",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete-all",
+			"request": {
+				"url": "http://localhost:8080/api/rest/v1/file/index",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
