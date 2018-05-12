@@ -44,7 +44,7 @@ after the application is started you can call the endpoints using [Postman](http
 directly your browser for [GET Open endpoints ](#open-endpoints).  
 
 
-##API documentation
+## API documentation
 You can access the API documentation at the following location: [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html)
 
 ## Open endpoints
