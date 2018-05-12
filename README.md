@@ -1,14 +1,6 @@
 # poc-file-search-api
 Proof of Concept - File Search API using Elasticsearch
 
-## Open endpoints
-
-Open endpoints require no Authentication:
-
-* Search files: `GET http://localhost:8080/api/rest/v1/file/search?pageSize=10&pageNumber=1&fileName=name&parentDir=name`
-* Index files from a directory: `POST http://localhost:8080/api/rest/v1/file/index?recursive=true&path=/path/`
-* Delete all files from index : `DELETE http://localhost:8080/api/rest/v1/file/index`
-
 ## How To Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com), 
@@ -50,3 +42,16 @@ $ java -jar poc-file-search-api-1.0-SNAPSHOT.jar
 ```
 after the application is started you can call the endpoints using [Postman](https://www.getpostman.com) or even
 directly your browser for [GET Open endpoints ](#open-endpoints).  
+
+
+##API documentation
+You can access the API documentation at the following location: [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html)
+
+## Open endpoints
+
+Open endpoints require no Authentication:
+
+* Search files: `GET http://localhost:8080/api/rest/v1/file/search?pageSize=10&pageNumber=1&fileName=name&parentDir=name`
+* Index files from a directory: `POST http://localhost:8080/api/rest/v1/file/index?recursive=true&path=/path/`
+* Delete all files from index : `DELETE http://localhost:8080/api/rest/v1/file/index`
+
