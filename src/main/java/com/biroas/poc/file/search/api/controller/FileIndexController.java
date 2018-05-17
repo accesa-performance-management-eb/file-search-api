@@ -1,10 +1,11 @@
 package com.biroas.poc.file.search.api.controller;
 
-import com.biroas.poc.file.search.api.model.IndexResult;
+import com.biroas.poc.file.search.api.model.result.IndexResult;
 import com.biroas.poc.file.search.api.service.FileIndexService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/rest/v1/file/index")
@@ -20,7 +21,7 @@ public class FileIndexController {
 
     @PostMapping
     public IndexResult indexFiles(@RequestParam(name = "path") String path,
-                                  @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) {
+                                  @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) throws IOException {
         return fileIndexService.indexDirectory(path, recursive);
     }
 

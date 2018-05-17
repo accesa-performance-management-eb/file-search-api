@@ -1,4 +1,4 @@
-package com.biroas.poc.file.search.api.model;
+package com.biroas.poc.file.search.api.model.result;
 
 public class IndexResult {
 

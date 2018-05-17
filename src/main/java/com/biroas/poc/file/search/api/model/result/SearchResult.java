@@ -1,4 +1,6 @@
-package com.biroas.poc.file.search.api.model;
+package com.biroas.poc.file.search.api.model.result;
+
+import com.biroas.poc.file.search.api.model.file.File;
 
 import java.util.List;
 

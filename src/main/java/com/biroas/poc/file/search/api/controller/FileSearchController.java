@@ -1,6 +1,6 @@
 package com.biroas.poc.file.search.api.controller;
 
-import com.biroas.poc.file.search.api.model.SearchResult;
+import com.biroas.poc.file.search.api.model.result.SearchResult;
 import com.biroas.poc.file.search.api.service.FileSearchService;
 import org.apache.lucene.queryparser.flexible.standard.QueryParserUtil;
 import org.springframework.data.domain.PageRequest;

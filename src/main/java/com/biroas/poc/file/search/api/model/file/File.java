@@ -1,10 +1,10 @@
-package com.biroas.poc.file.search.api.model;
+package com.biroas.poc.file.search.api.model.file;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.*;
 
-@Document(indexName = "test2",type = "test1")
+@Document(indexName = "test2", type = "test1")
 public class File {
     @Id
     private String id;
@@ -12,6 +12,8 @@ public class File {
     private boolean isDirectory;
     @Field(index = FieldIndex.not_analyzed, type = FieldType.String)
     private String parentDirectory;
+    private FileAttributes fileAttributes = new FileAttributes();
+    private FileType fileType = new FileType();
 
     public String getId() {
         return id;
@@ -44,5 +46,21 @@ public class File {
 
     public void setParentDirectory(String parentDirectory) {
         this.parentDirectory = parentDirectory;
+    }
+
+    public FileAttributes getFileAttributes() {
+        return fileAttributes;
+    }
+
+    public void setFileAttributes(FileAttributes fileAttributes) {
+        this.fileAttributes = fileAttributes;
+    }
+
+    public FileType getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(FileType fileType) {
+        this.fileType = fileType;
     }
 }
