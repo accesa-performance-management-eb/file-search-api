@@ -1,5 +1,6 @@
 package com.biroas.poc.file.search.api.controller;
 
+import com.biroas.poc.file.search.api.model.file.File;
 import com.biroas.poc.file.search.api.model.result.IndexResult;
 import com.biroas.poc.file.search.api.service.FileIndexService;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,20 @@ public class FileIndexController {
         this.fileIndexService = fileIndexService;
     }
 
-
     @PostMapping
+    public IndexResult indexFile(@RequestBody File file) throws IOException {
+        IndexResult indexResult = new IndexResult();
+        fileIndexService.indexFile(file);
+        indexResult.setIndexedDocuments(1);
+        return indexResult;
+    }
+
+    @PostMapping(path = "/internal")
     public IndexResult indexFiles(@RequestParam(name = "path") String path,
                                   @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) throws IOException {
         return fileIndexService.indexDirectory(path, recursive);
     }
+
 
     @DeleteMapping
     public IndexResult deleteAllFiles() {
