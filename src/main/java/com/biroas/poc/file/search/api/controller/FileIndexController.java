@@ -20,7 +20,7 @@ public class FileIndexController {
     }
 
     @PostMapping
-    public IndexResult indexFile(@RequestBody File file) throws IOException {
+    public IndexResult indexFile(@RequestBody File file) {
         IndexResult indexResult = new IndexResult();
         fileIndexService.indexFile(file);
         indexResult.setIndexedDocuments(1);

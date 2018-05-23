@@ -56,4 +56,11 @@ public class FileType {
     public void setOther(boolean other) {
         isOther = other;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" Extension: ").append(this.extension);
+        return stringBuilder.toString();
+    }
 }
