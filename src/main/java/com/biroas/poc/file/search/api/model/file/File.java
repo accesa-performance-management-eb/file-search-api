@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.*;
 
-@Document(indexName = "test3", type = "test1")
+@Document(indexName = "poc-files1", type = "file")
 public class File {
     @Id
     private String id;
@@ -15,6 +15,7 @@ public class File {
     private FileAttributes fileAttributes = new FileAttributes();
     private FileType fileType = new FileType();
     private String systemName;
+    private String fileContent;
 
     public String getId() {
         return id;
@@ -71,6 +72,14 @@ public class File {
 
     public void setSystemName(String systemName) {
         this.systemName = systemName;
+    }
+
+    public String getFileContent() {
+        return fileContent;
+    }
+
+    public void setFileContent(String fileContent) {
+        this.fileContent = fileContent;
     }
 
     @Override
