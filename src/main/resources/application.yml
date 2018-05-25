@@ -1,0 +1,10 @@
+es:
+  cluster.name: elasticsearch
+  host: localhost
+  port: 9300
+activemq:
+  broker.url: tcp://localhost:61616
+  queue.name: file-index
+  listener:
+    concurrency: 3-10
+    session.transacted: true
