@@ -12,4 +12,7 @@ public interface FileRepository extends ElasticsearchRepository<File, String> {
     Page<File> findByFileNameContaining(String fileName, Pageable paging);
 
     Page<File> findByFileNameContainingAndParentDirectoryContaining(String fileName, String parentDir, Pageable paging);
+
+    Page<File> findByFileNameContainingOrFileContentContaining(String fileName, String fileContent, Pageable paging);
+
 }

@@ -30,4 +30,12 @@ public class FileSearchController {
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize);
         return fileSearchService.findByFileNameAndParentDir(fileName, QueryParserUtil.escape(parentDir), pageRequest);
     }
+
+    @GetMapping(path = "/content")
+    public SearchResult findFilesByContent(@RequestParam(name = "fileContent", defaultValue = "") String fileContent,
+                                  @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                                  @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber) {
+        PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize);
+        return fileSearchService.findByFileContent(fileContent, pageRequest);
+    }
 }
