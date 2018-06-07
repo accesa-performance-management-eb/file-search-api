@@ -43,6 +43,11 @@ public class FileSearchService {
         return getSearchResult(filePage);
     }
 
+    public SearchResult findByFileContent(String fileContent, Pageable paging) {
+        Page<File> filePage = fileRepository.findByFileNameContainingOrFileContentContaining(fileContent, fileContent, paging);
+        return getSearchResult(filePage);
+    }
+
     private SearchResult getSearchResult(Page<File> filePage) {
         SearchResult searchResult = new SearchResult();
         searchResult.setFiles(filePage.getContent());
