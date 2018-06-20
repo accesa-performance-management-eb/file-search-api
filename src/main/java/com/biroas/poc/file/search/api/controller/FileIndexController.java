@@ -28,8 +28,8 @@ public class FileIndexController {
     }
 
     @PostMapping(path = "/internal")
-    public IndexResult indexFiles(@RequestParam(name = "path") String path,
-                                  @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) throws IOException {
+    public IndexResult indexInternalFiles(@RequestParam(name = "path") String path,
+                                          @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) throws IOException {
         return fileIndexService.indexDirectory(path, recursive);
     }
 

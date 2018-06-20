@@ -5,7 +5,6 @@ import com.biroas.poc.file.search.api.model.result.SearchResult;
 import com.biroas.poc.file.search.api.service.FileSearchService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +30,7 @@ public class FileSearchController {
     }
 
     @GetMapping
-    public SearchResult findFiles(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) QueryFilter filter,
+    public SearchResult findFiles(QueryFilter filter,
                                   @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
                                   @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber) {
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize);
