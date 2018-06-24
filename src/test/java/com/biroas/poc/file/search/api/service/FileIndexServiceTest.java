@@ -7,8 +7,8 @@ import com.biroas.poc.file.search.api.repository.FileRepository;
 import org.elasticsearch.client.Client;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,6 +16,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.inject.Inject;
+import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = FileSearchApplication.class)
@@ -64,7 +65,31 @@ public class FileIndexServiceTest {
     }
 
     @Test
-    public void indexDirectoryTest() {
-        // see     FileSystem fs = Jimfs.newFileSystem(); for mocking file system
+    public void indexDirectoryTest() throws IOException {
+        TemporaryFolder temporaryFolder=new TemporaryFolder();
+        temporaryFolder.create();
+        int count=0;
+
+        for(int i=0;i<40;i++){
+            temporaryFolder.newFile();
+            count++;
+            temporaryFolder.newFolder().createNewFile();
+            count++;
+        }
+
+        IndexResult indexResult = fileIndexService.indexDirectory(temporaryFolder.getRoot().toPath(), true);
+        Assert.assertEquals(count,indexResult.getIndexedDocuments());
+        Assert.assertEquals(0,indexResult.getDeletedDocuments());
+    }
+
+    @Test
+    public void indexDirectoryEmptyDirTest() throws IOException {
+        TemporaryFolder temporaryFolder=new TemporaryFolder();
+        temporaryFolder.create();
+
+        IndexResult indexResult = fileIndexService.indexDirectory(temporaryFolder.newFolder().toPath(), true);
+
+        Assert.assertEquals(0,indexResult.getIndexedDocuments());
+        Assert.assertEquals(0,indexResult.getDeletedDocuments());
     }
 }

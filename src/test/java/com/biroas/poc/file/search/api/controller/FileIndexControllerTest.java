@@ -56,7 +56,7 @@ public class FileIndexControllerTest {
         IndexResult indexResult = new IndexResult();
         indexResult.setIndexedDocuments(40);
 
-        Mockito.when(fileIndexService.indexDirectory(Matchers.anyString(), Matchers.anyBoolean())).thenReturn(indexResult);
+        Mockito.when(fileIndexService.indexDirectory(Matchers.anyObject(), Matchers.anyBoolean())).thenReturn(indexResult);
 
         mockMvc.perform(MockMvcRequestBuilders.post(url)
                 .param("path", path))
@@ -81,6 +81,4 @@ public class FileIndexControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.indexedDocuments", CoreMatchers.is(0)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.deletedDocuments", CoreMatchers.is(40)));
     }
-
-
 }

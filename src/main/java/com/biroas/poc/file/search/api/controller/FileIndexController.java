@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/api/rest/v1/file/index")
@@ -30,7 +31,7 @@ public class FileIndexController {
     @PostMapping(path = "/internal")
     public IndexResult indexInternalFiles(@RequestParam(name = "path") String path,
                                           @RequestParam(name = "recursive", defaultValue = "false") boolean recursive) throws IOException {
-        return fileIndexService.indexDirectory(path, recursive);
+        return fileIndexService.indexDirectory(Paths.get(path), recursive);
     }
 
 
