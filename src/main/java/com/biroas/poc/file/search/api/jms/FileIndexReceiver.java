@@ -5,9 +5,11 @@ import com.biroas.poc.file.search.api.service.FileIndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 
+@Component
 public class FileIndexReceiver {
 
     private final Logger logger = LoggerFactory.getLogger(FileIndexReceiver.class);

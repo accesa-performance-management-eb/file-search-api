@@ -81,4 +81,6 @@ public class FileIndexControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.indexedDocuments", CoreMatchers.is(0)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.deletedDocuments", CoreMatchers.is(40)));
     }
+
+
 }

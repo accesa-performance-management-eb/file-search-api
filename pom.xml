@@ -11,6 +11,9 @@
     <properties>
         <java.version>1.8</java.version>
         <springframework.boot.version>1.5.10.RELEASE</springframework.boot.version>
+        <sonar.coverage.exclusions>
+            **/FileSearchApplication.java
+        </sonar.coverage.exclusions>
     </properties>
 
     <dependencies>
@@ -57,6 +60,15 @@
             <version>${springframework.boot.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.jimfs/jimfs -->
+        <dependency>
+            <groupId>com.google.jimfs</groupId>
+            <artifactId>jimfs</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 

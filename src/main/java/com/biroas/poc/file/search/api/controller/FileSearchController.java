@@ -19,7 +19,7 @@ public class FileSearchController {
     private FileSearchService fileSearchService;
 
     @InitBinder
-    public void initBinder(final WebDataBinder binder){
+    public void initBinder(final WebDataBinder binder) {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
@@ -33,14 +33,15 @@ public class FileSearchController {
     public SearchResult findFiles(QueryFilter filter,
                                   @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
                                   @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber) {
+
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize);
         return fileSearchService.find(filter, pageRequest);
     }
 
     @GetMapping(path = "/content")
     public SearchResult findFilesByContent(@RequestParam(name = "fileContent", defaultValue = "") String fileContent,
-                                  @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
-                                  @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber) {
+                                           @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+                                           @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber) {
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize);
         return fileSearchService.findByFileContent(fileContent, pageRequest);
     }

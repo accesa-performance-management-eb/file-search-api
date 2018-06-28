@@ -74,4 +74,19 @@ public class QueryFilter {
     public void setAccessedRange(RangeDate accessedRange) {
         this.accessedRange = accessedRange;
     }
+
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append("fileName: ").append(fileName);
+        stringBuilder.append(" parentDirectory: ").append(parentDirectory);
+        stringBuilder.append(" content: ").append(content);
+        stringBuilder.append(" systemName: ").append(systemName);
+        stringBuilder.append(" sizeRange: ").append(sizeRange);
+        stringBuilder.append(" createdRange: ").append(createdRange);
+        stringBuilder.append(" modifiedRange: ").append(modifiedRange);
+        stringBuilder.append(" accessedRange: ").append(accessedRange);
+        return stringBuilder.toString();
+    }
+
 }

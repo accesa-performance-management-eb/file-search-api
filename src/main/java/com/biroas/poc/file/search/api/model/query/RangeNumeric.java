@@ -9,11 +9,6 @@ public class RangeNumeric {
 
     }
 
-    public RangeNumeric(int from, int to) {
-        this.from = from;
-        this.to = to;
-    }
-
     public Integer getFrom() {
         return from;
     }
