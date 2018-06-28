@@ -8,3 +8,15 @@ activemq:
   listener:
     concurrency: 3-10
     session.transacted: true
+spring:
+  application:
+    name: poc-file-search-api
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckPath: /health-check
+        healtCheckInterval: 20s
+
