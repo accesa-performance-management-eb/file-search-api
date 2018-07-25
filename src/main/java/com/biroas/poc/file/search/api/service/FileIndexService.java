@@ -6,10 +6,12 @@ import com.biroas.poc.file.search.api.model.file.FileType;
 import com.biroas.poc.file.search.api.model.result.IndexResult;
 import com.biroas.poc.file.search.api.repository.FileRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Date;
 
@@ -27,14 +29,14 @@ public class FileIndexService {
         return fileRepository.save(file);
     }
 
-    public IndexResult indexDirectory(String path, boolean recursive) throws IOException {
+    public IndexResult indexDirectory(Path path, boolean recursive) throws IOException {
         IndexResult indexResult = new IndexResult();
 
-        java.io.File folder = new java.io.File(path);
+        java.io.File folder = path.toFile();
         java.io.File[] listOfFiles = folder.listFiles();
         long count = 0;
 
-        if (listOfFiles == null) {
+        if (ObjectUtils.isEmpty(listOfFiles)) {
             return indexResult;
         }
 
@@ -43,9 +45,9 @@ public class FileIndexService {
             file.setFileName(diskFile.getName());
             file.setParentDirectory(diskFile.getParentFile().getAbsolutePath());
             file.setDirectory(diskFile.isDirectory());
-
             if (recursive && file.isDirectory()) {
-                count += indexDirectory(file.getParentDirectory() + java.io.File.separator + file.getFileName(), true)
+                count += indexDirectory(path.getFileSystem().getPath(
+                        file.getParentDirectory() + java.io.File.separator + file.getFileName()), true)
                         .getIndexedDocuments();
             }
 

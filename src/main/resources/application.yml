@@ -8,3 +8,8 @@ activemq:
   listener:
     concurrency: 3-10
     session.transacted: true
+spring:
+  application:
+    name: poc-file-search-api
+
+

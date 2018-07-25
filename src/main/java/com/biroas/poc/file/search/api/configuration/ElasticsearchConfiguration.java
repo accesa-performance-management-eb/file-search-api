@@ -11,6 +11,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Configuration
 public class ElasticsearchConfiguration {
@@ -23,7 +24,7 @@ public class ElasticsearchConfiguration {
     private int port;
 
     @Bean
-    public Client getClient() throws Exception{
+    public Client getClient() throws UnknownHostException {
         Settings esSettings = Settings.settingsBuilder()
                 .put("cluster.name", clusterName)
                 .build();
@@ -35,7 +36,7 @@ public class ElasticsearchConfiguration {
     }
 
     @Bean
-    public ElasticsearchOperations getElasticsearchTemplate() throws Exception{
+    public ElasticsearchOperations getElasticsearchTemplate() throws UnknownHostException{
         return new ElasticsearchTemplate(getClient());
     }
 }
