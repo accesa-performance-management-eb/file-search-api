@@ -5,6 +5,7 @@ public class FileFields {
     }
 
     public static final String FILE_NAME = "fileName";
+    public static final String FILE_CONTENT = "fileContent";
     public static final String PARENT_DIRECTORY = "parentDirectory";
     public static final String SYSTEM_NAME = "systemName";
     public static final String CREATION_DATE = "fileAttributes.creationDate";

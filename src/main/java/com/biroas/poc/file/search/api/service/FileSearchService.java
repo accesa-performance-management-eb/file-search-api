@@ -10,6 +10,8 @@ import com.biroas.poc.file.search.api.repository.FileRepository;
 import org.apache.lucene.queryparser.flexible.standard.QueryParserUtil;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,8 @@ import javax.inject.Inject;
 
 @Service
 public class FileSearchService {
+
+    private final Logger logger = LoggerFactory.getLogger(FileSearchService.class);
 
     private FileRepository fileRepository;
     private ElasticsearchTemplate elasticsearchTemplate;
@@ -36,23 +40,9 @@ public class FileSearchService {
         return fileRepository.save(file);
     }
 
-    public Iterable<File> findAll() {
-        return fileRepository.findAll();
-    }
-
     public SearchResult findAll(Pageable paging) {
         Page<File> filePage = fileRepository.findAll(paging);
 
-        return getSearchResult(filePage);
-    }
-
-    public SearchResult findByFileName(String fileName, Pageable paging) {
-        Page<File> filePage = fileRepository.findByFileNameContaining(fileName, paging);
-        return getSearchResult(filePage);
-    }
-
-    public SearchResult findByFileNameAndParentDir(String fileName, String parentDir, Pageable paging) {
-        Page<File> filePage = fileRepository.findByFileNameContainingAndParentDirectoryContaining(fileName, parentDir, paging);
         return getSearchResult(filePage);
     }
 
@@ -62,11 +52,14 @@ public class FileSearchService {
     }
 
     public SearchResult find(QueryFilter filter, PageRequest pageRequest) {
+        logger.info("Received new search request: {}", filter);
+
         NativeSearchQueryBuilder query = new NativeSearchQueryBuilder();
 
         addStringFilter(query, FileFields.FILE_NAME, filter.getFileName());
         addStringFilter(query, FileFields.PARENT_DIRECTORY, filter.getParentDirectory());
         addStringFilter(query, FileFields.SYSTEM_NAME, filter.getSystemName());
+        addStringFilter(query, FileFields.FILE_CONTENT, filter.getContent());
         addRangeNumericFilter(query, FileFields.SIZE, filter.getSizeRange());
         addRangeDateFilter(query, FileFields.CREATION_DATE, filter.getCreatedRange());
         addRangeDateFilter(query, FileFields.MODIFIED_DATE, filter.getModifiedRange());
