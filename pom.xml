@@ -60,7 +60,7 @@
             <version>${springframework.boot.version}</version>
             <scope>test</scope>
         </dependency>
-
+      
         <!-- https://mvnrepository.com/artifact/com.google.jimfs/jimfs -->
         <dependency>
             <groupId>com.google.jimfs</groupId>
@@ -69,6 +69,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-all</artifactId>
+            <version>1.3.0.RELEASE</version>
+        </dependency>
 
     </dependencies>
 
