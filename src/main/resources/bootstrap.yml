@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    consul:
+      host: consul.DevIs.Cool
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckPath: /health-check
+        healtCheckInterval: 20s
