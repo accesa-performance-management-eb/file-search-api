@@ -5,10 +5,6 @@ public class RangeNumeric {
     private Integer from;
     private Integer to;
 
-    public RangeNumeric() {
-
-    }
-
     public Integer getFrom() {
         return from;
     }
