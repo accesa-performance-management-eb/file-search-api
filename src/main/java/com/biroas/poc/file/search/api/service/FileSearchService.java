@@ -70,6 +70,11 @@ public class FileSearchService {
         return getSearchResult(files);
     }
 
+    public File findById(String fileId){
+
+        return fileRepository.findOne(fileId);
+    }
+
     private void addStringFilter(NativeSearchQueryBuilder query, String fieldName, String fieldValue) {
         if (!ObjectUtils.isEmpty(fieldValue)) {
             query.withQuery(QueryBuilders.queryStringQuery(QueryParserUtil.escape(fieldValue)).field(fieldName));

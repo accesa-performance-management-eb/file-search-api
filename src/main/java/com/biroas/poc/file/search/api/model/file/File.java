@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.*;
 
-@Document(indexName = "poc-files1", type = "file")
+@Document(indexName = "poc-files", type = "file")
 public class File {
     @Id
     private String id;
     private String fileName;
     private boolean isDirectory;
-    @Field(index = FieldIndex.not_analyzed, type = FieldType.String)
+    //TODO study the right way to make parentDirectory searchable when having also separators in name
+    //@Field(index = FieldIndex.not_analyzed, type = FieldType.String)
     private String parentDirectory;
     private FileAttributes fileAttributes = new FileAttributes();
     private FileType fileType = new FileType();
