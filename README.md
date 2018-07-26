@@ -1,5 +1,11 @@
 # poc-file-search-api
-Proof of Concept - File Search API using Elasticsearch
+[![Build Status](https://api.travis-ci.org/accesa-performance-management-eb/poc-file-search-api.svg?branch=master)](https://travis-ci.org/eusebiu-biroas/randomfiles.io-api) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=security_rating)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=bugs)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=code_smells
+)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Duplicated lines](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=duplicated_lines_density
+)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=ncloc
+)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.biroas.poc%3Apoc-file-search-api&metric=coverage
+)](https://sonarcloud.io/dashboard?id=com.biroas.poc%3Apoc-file-search-api) 
+
+#Proof of Concept - File Search API using Elasticsearch
 
 ## How To Use
 
@@ -41,17 +47,18 @@ $ cd target
 $ java -jar poc-file-search-api-1.0-SNAPSHOT.jar
 ```
 after the application is started you can call the endpoints using [Postman](https://www.getpostman.com) or even
-directly your browser for [GET Open endpoints ](#open-endpoints).  
+directly your browser.
 
 
 ## API documentation
-You can access the API documentation at the following location: [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html)
+You can access the API documentation at the following location: [`https://poc-file-search-api.herokuapp.com/swagger-ui.html`](https://poc-file-search-api.herokuapp.com/swagger-ui.html)
 
-## Open endpoints
+# C4 Model Diagrams
 
-Open endpoints require no Authentication:
+## Level 1: System Context diagram
 
-* Search files: `GET http://localhost:8080/api/rest/v1/file/search?pageSize=10&pageNumber=1&fileName=name&parentDir=name`
-* Index files from a directory: `POST http://localhost:8080/api/rest/v1/file/index?recursive=true&path=/path/`
-* Delete all files from index : `DELETE http://localhost:8080/api/rest/v1/file/index`
+![alt text](c4model/C1.png)
 
+## Level 2: Container diagram
+
+![alt text](c4model/C2.png)
